@@ -14,5 +14,12 @@
     },
     "require": {
         "laravel/framework": "^8.75"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alyka\\Modularizer\\ServiceProvider"
+            ]
+        }
     }
 }
