@@ -1,0 +1,104 @@
+<?php
+
+namespace {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Controllers;
+
+use Alyka\Modularizer\Foundation\Http\Controller;
+use Services\Payment\Http\Resources\PaymentResource;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\Cancel{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\{{ serviceNameStudly }}SettingsRequest;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\Verify{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\ViewAny{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}Payment\Http\Resources\{{ serviceNameStudly }}Resource;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Contracts\{{ serviceNameStudly }}Service;
+
+class {{ serviceNameStudly }}Controller extends Controller
+{
+    /**
+     * {{ serviceNameStudly }}Service instance.
+     *
+     * @var {{ serviceNameStudly }}Service
+     */
+    protected ${{ serviceNameCamel }}Service;
+
+    /**
+     * Create new controller instance.
+     *
+     * @param {{ serviceNameStudly }}Service ${{ serviceNameCamel }}Service
+     * @return void
+     */
+    public function __construct({{ serviceNameStudly }}Service ${{ serviceNameCamel }}Service)
+    {
+        $this->{{ serviceNameCamel }}Service = ${{ serviceNameCamel }}Service;
+    }
+
+    /**
+     * Display a listing of all {{ serviceNameWords }}.
+     *
+     * @param ViewAny{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(ViewAny{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        ${{ serviceNamePluralCamel }} = $this->{{ serviceNameCamel }}Service->index($requestAttributes);
+
+        return PaymentResource::collection(${{ serviceNamePluralCamel }});
+    }
+
+    /**
+     * Save the settings.
+     *
+     * @param SettingsRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveSettings({{ serviceNameStudly }}SettingsRequest $request)
+    {
+        $requestAttributes = $request->validated();
+
+        return $this->{{ serviceNameCamel }}Service->saveSettings($requestAttributes);
+    }
+
+    /**
+     * Get the settings.
+     *
+     * @param SettingsRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getSettings()
+    {
+        return $this->{{ serviceNameCamel }}Service->getSettings();
+    }
+
+    /**
+     * Verify the specified payment.
+     *
+     * @param string|int $id
+     * @param Verify{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function verify($id, Verify{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        $payment = $this->{{ serviceNameCamel }}Service->verify($id, $requestAttributes);
+
+        return new PaymentResource($payment);
+    }
+
+    /**
+     * Cancel the specified payment.
+     *
+     * @param string|int $id
+     * @param Cancel{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($id, Cancel{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        $payment = $this->{{ serviceNameCamel }}Service->cancel($id, $requestAttributes);
+
+        return new PaymentResource($payment);
+    }
+}

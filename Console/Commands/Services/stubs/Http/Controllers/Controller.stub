@@ -1,0 +1,105 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Contracts\{{ serviceNameStudly }}Service;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\Create{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\Update{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\View{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\ViewAny{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Requests\Delete{{ serviceNameStudly }}Request;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Resources\{{ serviceNameStudly }}Resource;
+use Alyka\Modularizer\Foundation\Http\Controller;
+
+class {{ class }} extends Controller
+{
+    /**
+     * {{ serviceNameStudly }}Service instance.
+     *
+     * @var {{ serviceNameStudly }}Service
+     */
+    protected ${{ serviceNameCamel }}Service;
+
+    /**
+     * Create new controller instance.
+     *
+     * @param {{ serviceNameStudly }}Service ${{ serviceNameCamel }}Service
+     * @return void
+     */
+    public function __construct({{ serviceNameStudly }}Service ${{ serviceNameCamel }}Service)
+    {
+        $this->{{ serviceNameCamel }}Service = ${{ serviceNameCamel }}Service;
+    }
+
+    /**
+     * Display a listing of all {{ serviceNameStudly }}.
+     *
+     * @param ViewAny{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(ViewAny{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        ${{ serviceNamePluralCamel }} = $this->{{ serviceNameCamel }}Service->index($requestAttributes);
+
+        return {{ serviceNameStudly }}Resource::collection(${{ serviceNamePluralCamel }});
+    }
+
+    /**
+     * Show the specified {{ serviceNameStudly }}.
+     *
+     * @param string|int $id
+     * @param View{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id, View{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        ${{ serviceNameCamel }} = $this->{{ serviceNameCamel }}Service->show($id, $requestAttributes);
+
+        return new {{ serviceNameStudly }}Resource(${{ serviceNameCamel }});
+    }
+
+    /**
+     * Create a new {{ serviceNameStudly }} in storage.
+     *
+     * @param Create{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Create{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        return $this->{{ serviceNameCamel }}Service->store($requestAttributes);
+    }
+
+    /**
+     * Update the specified {{ serviceNameStudly }}.
+     *
+     * @param string|int $id
+     * @param Update{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Update{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        return $this->{{ serviceNameCamel }}Service->update($id, $requestAttributes);
+    }
+
+    /**
+     * Delete the specified {{ serviceNameStudly }} from storage.
+     *
+     * @param string|int $id
+     * @param Delete{{ serviceNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id, Delete{{ serviceNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        return $this->{{ serviceNameCamel }}Service->destroy($id, $requestAttributes);
+    }
+}

@@ -1,0 +1,7 @@
+import { I{{ serviceNameStudly }} } from '..';
+
+const {{ serviceNameStudly }}: I{{ serviceNameStudly }} = {
+    id: '',
+}
+
+export default {{ serviceNameStudly }};

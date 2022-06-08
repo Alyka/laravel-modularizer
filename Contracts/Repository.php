@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Contracts;
+namespace Alyka\Modularizer\Contracts;
 
 use Services\User\Models\User;
-use Core\Database\Eloquent\Model;
+use Alyka\Modularizer\Database\Eloquent\Model;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;

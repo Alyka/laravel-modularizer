@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Database\Eloquent\Concerns;
+namespace Alyka\Modularizer\Database\Eloquent\Concerns;
 
-use Core\Database\Eloquent\Relations\MorphToOne;
-use Core\Database\Eloquent\Model;
+use Alyka\Modularizer\Database\Eloquent\Relations\MorphToOne;
+use Alyka\Modularizer\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 

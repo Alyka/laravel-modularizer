@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation\Console;
+namespace Alyka\Modularizer\Foundation\Console;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Composer;

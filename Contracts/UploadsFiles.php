@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Contracts;
+namespace Alyka\Modularizer\Contracts;
 
 use Illuminate\Http\UploadedFile;
 

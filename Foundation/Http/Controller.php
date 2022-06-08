@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation\Http;
+namespace Alyka\Modularizer\Foundation\Http;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

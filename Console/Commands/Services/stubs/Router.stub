@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Alyka\Modularizer\Routing\Router as BaseRouter;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Http\Controllers\{{ serviceNameStudly }}Controller;
+
+class Router extends BaseRouter
+{
+    /**
+     * Route this api resource to its controller.
+     *
+     * @return void
+     */
+    public function api()
+    {
+        $this->router->apiResource('/{{ serviceNamePluralKebab }}', {{ serviceNameStudly }}Controller::class);
+    }
+}

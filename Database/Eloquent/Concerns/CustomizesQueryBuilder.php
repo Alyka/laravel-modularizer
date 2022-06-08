@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Database\Eloquent\Concerns;
+namespace Alyka\Modularizer\Database\Eloquent\Concerns;
 
-use Core\Database\Query\Builder;
+use Alyka\Modularizer\Database\Query\Builder;
 
 trait CustomizesQueryBuilder
 {

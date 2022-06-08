@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Services\{{ serviceNameStudly }}\Models\{{ serviceNameStudly }};
+
+trait {{ class }}
+{
+
+}

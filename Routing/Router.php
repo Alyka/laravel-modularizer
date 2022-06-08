@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Routing;
+namespace Alyka\Modularizer\Routing;
 
 use Illuminate\Support\Str;
 

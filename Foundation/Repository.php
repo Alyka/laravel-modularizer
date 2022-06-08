@@ -1,11 +1,11 @@
 <?php
 
-namespace Core\Foundation;
+namespace Alyka\Modularizer\Foundation;
 
 use Services\User\Models\User;
-use Core\Database\Eloquent\Model;
-use Core\Contracts\Repository as RepositoryContract;
-use Core\Concerns\Aggregatable;
+use Alyka\Modularizer\Database\Eloquent\Model;
+use Alyka\Modularizer\Contracts\Repository as RepositoryContract;
+use Alyka\Modularizer\Concerns\Aggregatable;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;

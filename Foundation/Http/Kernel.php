@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation\Http;
+namespace Alyka\Modularizer\Foundation\Http;
 
 use Illuminate\Contracts\Http\Kernel as KernelContract;
 use Illuminate\Foundation\Http\Kernel as BaseKernel;

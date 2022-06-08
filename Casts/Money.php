@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Casts;
+namespace Alyka\Modularizer\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 

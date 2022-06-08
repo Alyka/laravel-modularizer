@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Support;
+namespace Alyka\Modularizer\Support;
 
 class Cast
 {

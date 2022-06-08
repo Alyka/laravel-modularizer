@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Facades\{{ serviceNameStudly }}Repository;
+use Illuminate\Foundation\Http\FormRequest;
+
+class {{ class }} extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        ${{ serviceNameCamel }} = {{ serviceNameStudly }}Repository::find($this->route('{{ serviceNameSnake }}'));
+
+        return currentUser()->can('delete', ${{ serviceNameCamel }});
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+
+        ];
+    }
+}

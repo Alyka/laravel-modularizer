@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Contracts;
+namespace Alyka\Modularizer\Contracts;
 
-use Core\Database\Eloquent\Model;
+use Alyka\Modularizer\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 

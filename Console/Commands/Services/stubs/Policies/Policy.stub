@@ -1,0 +1,100 @@
+<?php
+
+namespace {{ namespace }};
+
+use Services\User\Models\User;
+use Services\User\Contracts\UserRepository;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Models\{{ serviceNameStudly }};
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class {{ class }}
+{
+    use HandlesAuthorization;
+
+    /**
+     * The user repository instance.
+     *
+     * @var UserRepository
+     */
+    protected $userRepository;
+
+    /**
+     * Create a new policy instance.
+     *
+     * @return void
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
+     * Determine if the specified user can create {{ serviceNameCamel }}.
+     *
+     * @param  User  $user
+     * @return bool
+     */
+    public function create(?User $user)
+    {
+        return false;
+    }
+
+    /**
+     * Determine if the specified user can update the specified {{ serviceNameCamel }}.
+     *
+     * @param  User  $user
+     * @param  {{ serviceNameStudly }}  ${{ serviceNameCamel }}
+     * @return bool
+     */
+    public function update(?User $user, {{ serviceNameStudly }} ${{ serviceNameCamel }})
+    {
+        return $this->userRepository->owns($user, ${{ serviceNameCamel }});
+    }
+
+    /**
+     * Determine if the specified user can view all {{ serviceNamePluralWords }}.
+     *
+     * @param  User  $user
+     * @return bool
+     */
+    public function viewAny(?User $user)
+    {
+        return true;
+    }
+
+    /**
+     * Determine if the specified user can view any {{ serviceNameCamel }}.
+     *
+     * @param  User  $user
+     * @param  {{ serviceNameStudly }}  ${{ serviceNameCamel }}
+     * @return bool
+     */
+    public function view(?User $user, {{ serviceNameStudly }} ${{ serviceNameCamel }})
+    {
+        return true;
+    }
+
+    /**
+     * Determine if the specified user can delete the specified {{ serviceNameCamel }}.
+     *
+     * @param  User  $user
+     * @param  {{ serviceNameStudly }}  ${{ serviceNameCamel }}
+     * @return bool
+     */
+    public function delete(?User $user, {{ serviceNameStudly }} ${{ serviceNameCamel }})
+    {
+        return $this->userRepository->owns($user, ${{ serviceNameCamel }});
+    }
+
+    /**
+     * The authorization filer.
+     *
+     * @param User $user
+     * @param string $ability
+     * @return bool|null
+     */
+    public function before($user, $ability)
+    {
+        return currentUser()->is_admin;
+    }
+}

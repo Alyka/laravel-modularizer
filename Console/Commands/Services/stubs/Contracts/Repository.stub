@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Alyka\Modularizer\Contracts\Repository;
+
+interface {{ class }} extends Repository
+{
+
+}

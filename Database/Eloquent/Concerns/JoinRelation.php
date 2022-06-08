@@ -1,10 +1,10 @@
 <?php
 
-namespace Core\Database\Eloquent\Concerns;
+namespace Alyka\Modularizer\Database\Eloquent\Concerns;
 
 use BadMethodCallException;
 use Closure;
-use Core\Database\Eloquent\Model;
+use Alyka\Modularizer\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

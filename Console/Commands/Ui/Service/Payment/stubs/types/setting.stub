@@ -1,0 +1,5 @@
+interface ISettings {
+
+};
+
+export default ISettings;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Console;
+namespace Alyka\Modularizer\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use Core\Foundation\Console\Kernel as ConsoleKernel;
+use Alyka\Modularizer\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {

@@ -1,0 +1,31 @@
+{
+    "name": "lavamon-services/{{ serviceNameKebab }}",
+    "description": "",
+    "authors": [
+        {
+            "name": "Alika Matthew I.",
+            "email": "alika.matthew@gmail.com"
+        }
+    ],
+    "require" : {
+        "lavamon/core" : "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ serviceNamespace }}\{{ serviceNameStudly }}\\": ""
+        },
+        "files": [
+            "Helpers/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "{{ serviceNamespace }}\{{ serviceNameStudly }}\\Providers\\{{ serviceNameStudly }}ServiceProvider"
+            ],
+            "aliases": {
+                "{{ serviceNameStudly }}" : "{{ serviceNamespace }}\{{ serviceNameStudly }}\\Models\\{{ serviceNameStudly }}"
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Foundation\Providers;
+namespace Alyka\Modularizer\Foundation\Providers;
 
-use Core\Support\Cast;
+use Alyka\Modularizer\Support\Cast;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -21,14 +21,14 @@ abstract class ServiceProvider extends SupportServiceProvider
     /**
      * The console kernel class of the service provider.
      *
-     * @var \Core\Foundation\Http\Kernel
+     * @var \Alyka\Modularizer\Foundation\Http\Kernel
      */
     protected $consoleKernel;
 
     /**
      * The http kernel class of the service provider.
      *
-     * @var \Core\Foundation\Http\Kernel
+     * @var \Alyka\Modularizer\Foundation\Http\Kernel
      */
     protected $httpKernel;
 

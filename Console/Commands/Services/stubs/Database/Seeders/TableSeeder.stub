@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Facades\{{ serviceNameStudly }}Repository;
+use Illuminate\Database\Seeder;
+
+class {{ class }} extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        {{ serviceNameStudly }}Repository::factory()
+            ->count(10)
+            ->create();
+    }
+}

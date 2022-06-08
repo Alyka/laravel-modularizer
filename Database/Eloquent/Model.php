@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Database\Eloquent;
+namespace Alyka\Modularizer\Database\Eloquent;
 
-use Core\Database\Eloquent\Concerns\Model as ConcernsModel;
+use Alyka\Modularizer\Database\Eloquent\Concerns\Model as ConcernsModel;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 
 abstract class Model extends BaseModel

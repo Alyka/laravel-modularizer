@@ -1,0 +1,22 @@
+import i18n from 'CORE/plugins/i18n';
+import { RouteConfig } from 'vue-router';
+
+const routes: RouteConfig[] = [
+    {
+        path: '/{{ serviceNamePluralKebab }}',
+        name: '{{ serviceNamePluralKebab }}',
+        component: () => import('./pages/Index.vue'),
+        meta: {
+            title: i18n.tc('{{ serviceNameSnake }}.{{ serviceNameSnake }}', 2),
+            icon: '',
+            breadcrumb: [
+                {
+                    text: i18n.tc('{{ serviceNameSnake }}.{{ serviceNameSnake }}', 2),
+                    to: {name: '{{ serviceNamePluralKebab }}'}
+                }
+            ],
+        },
+    },
+]
+
+export default routes;

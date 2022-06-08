@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Rules;
+namespace Alyka\Modularizer\Rules;
 
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\NumberParseException;

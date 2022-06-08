@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Eloquent\Concerns;
+namespace Alyka\Modularizer\Database\Eloquent\Concerns;
 
 trait Searchable
 {

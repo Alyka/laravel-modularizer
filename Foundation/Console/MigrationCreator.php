@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation\Console;
+namespace Alyka\Modularizer\Foundation\Console;
 
 use Illuminate\Database\Migrations\MigrationCreator as MigrationsMigrationCreator;
 use Illuminate\Filesystem\Filesystem;

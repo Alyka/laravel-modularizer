@@ -1,0 +1,36 @@
+import { Module } from "vuex-class-modules";
+import {
+    AxiosClient as Client,
+    vuexPlugin as store,
+    i18nPlugin,
+    Settable
+} from 'CORE';
+import { PaymentStore } from "SERVICES/payment";
+import { TranslateResult } from "vue-i18n";
+
+const client = new Client();
+
+@Module({ generateMutationSetters: true })
+class {{ serviceNameStudly }}Store extends PaymentStore  implements Settable
+{
+    /**
+     * @inheritDoc
+     */
+    public uri: string = '{{ serviceNamePluralKebab }}';
+
+    /**
+     * @inheritDoc
+     */
+    public title: TranslateResult = i18nPlugin.t('{{ serviceNameSnake }}.title');
+
+    /**
+     * Setting button text.
+     */
+    settingTitle: TranslateResult = i18nPlugin.tc('{{ serviceNameSnake }}.setting_title');
+
+    /**
+     * @inheritDoc
+     */
+    public name: string = '{{ serviceNameCamel }}';
+}
+export default new {{ serviceNameStudly }}Store({store, name: '{{ serviceNameCamel }}'}, client);

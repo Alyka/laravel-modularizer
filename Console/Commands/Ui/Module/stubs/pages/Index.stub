@@ -1,0 +1,17 @@
+<template>
+    <crud-table
+        :layout-search-text="$t('{{ serviceNameSnake }}.search_text')"
+    />
+</template>
+<script lang="ts">
+import Vue from 'vue';
+import { store } from 'SERVICES/{{ serviceNameKebab }}';
+export default Vue.extend({
+    provide()
+    {
+        return {
+            store
+        }
+    },
+})
+</script>

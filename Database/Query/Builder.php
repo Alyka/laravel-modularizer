@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Query;
+namespace Alyka\Modularizer\Database\Query;
 
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;

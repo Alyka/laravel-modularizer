@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation;
+namespace Alyka\Modularizer\Foundation;
 
 use Illuminate\Support\Collection;
 

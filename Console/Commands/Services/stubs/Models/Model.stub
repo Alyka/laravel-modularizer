@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use Alyka\Modularizer\Database\Eloquent\Model;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Database\Factories\{{ serviceNameStudly }}Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    /**
+     * @inheritDoc
+     */
+    protected $fillable = [
+        'user_id',
+    ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return new {{ serviceNameStudly }}Factory;
+    }
+}

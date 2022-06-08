@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Facades\Facade;
+use {{ serviceNamespace }}{{ serviceNameStudly }}\Providers\{{ serviceNameStudly }}ServiceProvider;
+
+class Route extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return {{ serviceNameStudly }}ServiceProvider::NAME.'Router';
+    }
+}

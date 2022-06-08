@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Foundation\Console;
+namespace Alyka\Modularizer\Foundation\Console;
 
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;

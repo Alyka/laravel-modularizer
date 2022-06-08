@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Rules;
+namespace Alyka\Modularizer\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Validation\Concerns\ValidatesAttributes;

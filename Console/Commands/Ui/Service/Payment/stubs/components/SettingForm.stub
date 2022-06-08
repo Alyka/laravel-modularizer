@@ -1,0 +1,20 @@
+<template>
+    <div>
+
+    </div>
+</template>
+<script lang="ts">
+import { ISetting } from '..';
+import Vue, { PropType } from 'vue';
+export default Vue.extend({
+    props: {
+        /**
+         * @model
+         */
+        value: {
+            type: Object as PropType<ISetting>,
+            required: true,
+        }
+    },
+});
+</script>

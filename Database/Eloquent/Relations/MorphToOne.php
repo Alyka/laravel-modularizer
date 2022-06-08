@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Database\Eloquent\Relations;
+namespace Alyka\Modularizer\Database\Eloquent\Relations;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;

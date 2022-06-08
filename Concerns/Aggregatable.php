@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Concerns;
+namespace Alyka\Modularizer\Concerns;
 
 use Illuminate\Support\Facades\DB;
 
