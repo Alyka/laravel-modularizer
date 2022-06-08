@@ -11,7 +11,7 @@ class MakeServiceCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:ui-service
+    protected $signature = 'modularizer-make:ui-service
                             {service : The name of the service.}
                             {dir?  : The directory to store the service\'s files in, relative to service\'s root.}';
 

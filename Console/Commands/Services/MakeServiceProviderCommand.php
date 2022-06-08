@@ -9,7 +9,7 @@ class MakeServiceProviderCommand extends MakeServiceCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:service-provider
+    protected $signature = 'modularizer-make:service-provider
                             {service}
                             {dir?}
                             {--a|auth}

@@ -11,7 +11,7 @@ class MakeModuleCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:ui-module
+    protected $signature = 'modularizer-make:ui-module
                             {module : The name of the module.}
                             {app :  The name of the app this module belongs to.}';
 

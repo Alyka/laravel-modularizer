@@ -9,7 +9,7 @@ class MakeTraitCommand extends SingleFileGenerator
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:trait {name} {service?} {dir?}';
+    protected $signature = 'modularizer-make:trait {name} {service?} {dir?}';
 
     /**
      * The console command description.

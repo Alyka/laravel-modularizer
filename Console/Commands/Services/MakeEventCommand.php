@@ -9,7 +9,7 @@ class MakeEventCommand extends SingleFileGenerator
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:event {name} {service?} {dir?}';
+    protected $signature = 'modularizer-make:event {name} {service?} {dir?}';
 
     /**
      * The console command description.

@@ -13,7 +13,7 @@ class MakeMigrationCommand extends MigrateMakeCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:migration
+    protected $signature = 'modularizer-make:migration
         {name : The name of the migration}
         {service : The name of the service this migration belongs to}
         {--create= : The table to be created}

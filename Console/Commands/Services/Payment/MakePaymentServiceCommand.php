@@ -11,7 +11,7 @@ class MakePaymentServiceCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:payment-service
+    protected $signature = 'modularizer-make:payment-service
                             {service : The name of the service to generate.}
                             {dir?  : The directory to store this service in, relative to services root.}';
 

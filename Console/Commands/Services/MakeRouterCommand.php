@@ -11,7 +11,7 @@ class MakeRouterCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:router
+    protected $signature = 'modularizer-make:router
                             {service : The name of the service to generate.}
                             {dir?  : The directory to store the files in, relative to services root.}';
 

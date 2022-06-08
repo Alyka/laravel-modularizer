@@ -9,7 +9,7 @@ class MakeListenerCommand extends SingleFileGenerator
      *
      * @var string
      */
-    protected $signature = 'lavamon-make:listener {name} {service?} {dir?}';
+    protected $signature = 'modularizer-make:listener {name} {service?} {dir?}';
 
     /**
      * The console command description.

@@ -13,7 +13,7 @@ class EventGenerateCommand extends Command
      *
      * @var string
      */
-    protected $name = 'lavamon-event:generate';
+    protected $name = 'modularizer-event:generate';
 
     /**
      * The console command description.
@@ -53,7 +53,7 @@ class EventGenerateCommand extends Command
             return;
         }
 
-        $this->callSilent('lavamon-make:event', [
+        $this->callSilent('modularizer-make:event', [
             'name' => $event,
             'service' => classService($event)
         ]);
@@ -73,7 +73,7 @@ class EventGenerateCommand extends Command
         foreach ($listeners as $listener) {
             $listener = preg_replace('/@.+$/', '', $listener);
 
-            $this->callSilent('lavamon-make:listener', [
+            $this->callSilent('modularizer-make:listener', [
                 'name' => $listener,
                 'service' => classService($listener)
             ]);

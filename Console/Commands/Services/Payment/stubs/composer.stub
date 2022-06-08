@@ -1,5 +1,5 @@
 {
-    "name": "lavamon-services/{{ serviceNameKebab }}",
+    "name": "services/{{ serviceNameKebab }}",
     "description": "",
     "authors": [
         {
@@ -8,7 +8,7 @@
         }
     ],
     "require" : {
-        "lavamon/core" : "dev-master"
+        "alyka/laravel-modularizer" : "dev-master"
     },
     "autoload": {
         "psr-4": {
