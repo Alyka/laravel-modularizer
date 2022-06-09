@@ -9,8 +9,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Alyka\\Modularizer\\": ""
-        }
+            "Modularizer\\": "src/"
+        },
+        "files": [
+            "helpers/Helpers.php"
+        ]
     },
     "require": {
         "laravel/framework": "^8.75"
@@ -18,7 +21,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Alyka\\Modularizer\\ServiceProvider"
+                "Modularizer\\Support\\ServiceProvider"
             ]
         }
     }

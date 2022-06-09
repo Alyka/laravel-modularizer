@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Database\Eloquent\Model;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Database\Factories\{{ moduleNameStudly }}Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    /**
+     * @inheritDoc
+     */
+    protected $fillable = [
+        'user_id',
+    ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return new {{ moduleNameStudly }}Factory;
+    }
+}

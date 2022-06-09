@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Contracts\Service;
+
+interface {{ class }} extends Service
+{
+
+}

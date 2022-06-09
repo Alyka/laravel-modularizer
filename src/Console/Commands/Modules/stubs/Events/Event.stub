@@ -1,0 +1,45 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Models\{{ moduleNameStudly }};
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class {{ class }}
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * The {{ moduleNameWords }} instance.
+     *
+     * @var {{ moduleNameStudly }} {{ moduleNameCamel }}
+     */
+    public $model;
+
+    /**
+     * Create a new event instance.
+     *
+     * @param {{ moduleNameStudly }} ${{ moduleNameCamel }}
+     * @return void
+     */
+    public function __construct({{ moduleNameStudly }} ${{ moduleNameCamel }})
+    {
+        $this->model = ${{ moduleNameCamel }};
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
+}

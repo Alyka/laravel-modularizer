@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Services\{{ moduleNameStudly }}Service as Services{{ moduleNameStudly }}Service;
+use Illuminate\Support\Facades\Facade;
+
+class {{ class }} extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return Services{{ moduleNameStudly }}Service::class;
+    }
+}

@@ -1,1 +1,0 @@
-export { default as {{ serviceNameStudly }}Form } from './{{ serviceNameStudly }}Form.vue';

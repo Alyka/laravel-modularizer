@@ -1,0 +1,7 @@
+import { I{{ moduleNameStudly }} } from '..';
+
+const {{ moduleNameStudly }}: I{{ moduleNameStudly }} = {
+    id: '',
+}
+
+export default {{ moduleNameStudly }};

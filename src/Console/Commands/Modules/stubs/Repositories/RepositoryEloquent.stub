@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Models\{{ moduleNameStudly }};
+use Modularizer\Foundation\Repository;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Repository;
+
+class {{ class }} extends Repository implements {{ moduleNameStudly }}Repository
+{
+    /**
+     * Create new instance of the repository.
+     *
+     * @return void
+     */
+    public function __construct({{ moduleNameStudly }} $model)
+    {
+        parent::__construct($model);
+
+        $this->setModel($model);
+    }
+}

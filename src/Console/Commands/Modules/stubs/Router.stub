@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Routing\Router as BaseRouter;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Controllers\{{ moduleNameStudly }}Controller;
+
+class Router extends BaseRouter
+{
+    /**
+     * Route this api resource to its controller.
+     *
+     * @return void
+     */
+    public function api()
+    {
+        $this->router->apiResource('/{{ moduleNamePluralKebab }}', {{ moduleNameStudly }}Controller::class);
+    }
+}

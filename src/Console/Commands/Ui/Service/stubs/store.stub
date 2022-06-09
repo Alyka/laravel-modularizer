@@ -1,0 +1,40 @@
+import { TableStore, ITableStore } from "CORE";
+import { I{{ moduleNameStudly }} } from ".";
+import { {{ moduleNameStudly }} } from ".";
+import { Module } from "vuex-class-modules";
+import { vuexPlugin as store, i18nPlugin } from 'CORE/plugins';
+import { AxiosClient as Client } from 'CORE';
+import { TranslateResult } from "vue-i18n";
+
+const client = new Client();
+
+@Module({ generateMutationSetters: true })
+class {{ moduleNameStudly }}Store extends TableStore<I{{ moduleNameStudly }}> implements ITableStore<I{{ moduleNameStudly }}>
+{
+    /**
+     * @inheritDoc
+     */
+    public uri: string = '{{ moduleNamePluralKebab }}';
+
+    /**
+     * @inheritDoc
+     */
+    public item: I{{ moduleNameStudly }} = { ...{{ moduleNameStudly }} };
+
+    /**
+     * @inheritDoc
+     */
+    public itemOriginal: I{{ moduleNameStudly }} = { ...{{ moduleNameStudly }} };
+
+    /**
+     * @inheritDoc
+     */
+    public title: TranslateResult = i18nPlugin.tc('{{ moduleNameSnake }}.{{ moduleNameSnake }}');
+
+    /**
+     * @inheritDoc
+     */
+    public name: string = '{{ moduleNameStudly }}';
+}
+
+export default new {{ moduleNameStudly }}Store({store, name: '{{ moduleNameStudly }}'}, client);

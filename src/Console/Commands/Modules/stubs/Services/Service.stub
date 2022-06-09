@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Foundation\Service;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Repository;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service as {{ moduleNameStudly }}ServiceContract;
+
+class {{ class }} extends Service implements {{ moduleNameStudly }}ServiceContract
+{
+    /**
+     * Create new instance of {{ moduleNameStudly }}Service
+     *
+     * @param {{ moduleNameStudly }}Repository $repository
+     * @return void
+     */
+    public function __construct({{ moduleNameStudly }}Repository $repository)
+    {
+        parent::__construct($repository);
+    }
+}

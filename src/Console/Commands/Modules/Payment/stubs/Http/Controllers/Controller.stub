@@ -1,0 +1,104 @@
+<?php
+
+namespace {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Controllers;
+
+use Modularizer\Foundation\Http\Controller;
+use Module\Payment\Http\Resources\PaymentResource;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Requests\Cancel{{ moduleNameStudly }}Request;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Requests\{{ moduleNameStudly }}SettingsRequest;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Requests\Verify{{ moduleNameStudly }}Request;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Requests\ViewAny{{ moduleNameStudly }}Request;
+use {{ moduleNamespace }}Payment\Http\Resources\{{ moduleNameStudly }}Resource;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service;
+
+class {{ moduleNameStudly }}Controller extends Controller
+{
+    /**
+     * {{ moduleNameStudly }}Service instance.
+     *
+     * @var {{ moduleNameStudly }}Service
+     */
+    protected ${{ moduleNameCamel }}Service;
+
+    /**
+     * Create new controller instance.
+     *
+     * @param {{ moduleNameStudly }}Service ${{ moduleNameCamel }}Service
+     * @return void
+     */
+    public function __construct({{ moduleNameStudly }}Service ${{ moduleNameCamel }}Service)
+    {
+        $this->{{ moduleNameCamel }}Service = ${{ moduleNameCamel }}Service;
+    }
+
+    /**
+     * Display a listing of all {{ moduleNameWords }}.
+     *
+     * @param ViewAny{{ moduleNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(ViewAny{{ moduleNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        ${{ moduleNamePluralCamel }} = $this->{{ moduleNameCamel }}Service->index($requestAttributes);
+
+        return PaymentResource::collection(${{ moduleNamePluralCamel }});
+    }
+
+    /**
+     * Save the settings.
+     *
+     * @param SettingsRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveSettings({{ moduleNameStudly }}SettingsRequest $request)
+    {
+        $requestAttributes = $request->validated();
+
+        return $this->{{ moduleNameCamel }}Service->saveSettings($requestAttributes);
+    }
+
+    /**
+     * Get the settings.
+     *
+     * @param SettingsRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getSettings()
+    {
+        return $this->{{ moduleNameCamel }}Service->getSettings();
+    }
+
+    /**
+     * Verify the specified payment.
+     *
+     * @param string|int $id
+     * @param Verify{{ moduleNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function verify($id, Verify{{ moduleNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        $payment = $this->{{ moduleNameCamel }}Service->verify($id, $requestAttributes);
+
+        return new PaymentResource($payment);
+    }
+
+    /**
+     * Cancel the specified payment.
+     *
+     * @param string|int $id
+     * @param Cancel{{ moduleNameStudly }}Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($id, Cancel{{ moduleNameStudly }}Request $request)
+    {
+        $requestAttributes = $request->validated();
+
+        $payment = $this->{{ moduleNameCamel }}Service->cancel($id, $requestAttributes);
+
+        return new PaymentResource($payment);
+    }
+}

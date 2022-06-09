@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Module\Payment\Contracts\PaymentService;
+
+interface {{ class }} extends PaymentService
+{
+
+}

@@ -1,0 +1,14 @@
+import i18n from 'CORE/plugins/i18n';
+import { IMenu } from 'CORE/types';
+
+const sidebar: IMenu[] = [
+    {
+        name: '{{ moduleNamePluralKebab }}',
+        meta: {
+            icon: 'cubes',
+            title: i18n.tc('{{ moduleNameSnake }}.{{ moduleNameSnake }}', 2),
+        },
+    },
+];
+
+export default sidebar;

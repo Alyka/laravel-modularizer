@@ -1,0 +1,95 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service as {{ moduleNameStudly }}ServiceContract;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Services\{{ moduleNameStudly }}Service;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Repository;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Repositories\{{ moduleNameStudly }}RepositoryEloquent;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Router;
+use Modularizer\Foundation\Providers\ServiceProvider;
+
+class {{ class }} extends ServiceProvider
+{
+    /**
+     * @var string
+     */
+    public const NAME = '{{ moduleNamePluralSnake }}';
+
+    /**
+     * @inheritDoc
+     */
+    protected $providers = [
+        AuthServiceProvider::class
+    ];
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerMigrations();
+
+        parent::boot();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerConfig();
+        $this->registerRouter();
+        $this->app->register(AuthServiceProvider::class);
+        $this->app->bind({{ moduleNameStudly }}Repository::class, {{ moduleNameStudly }}RepositoryEloquent::class);
+        $this->app->bind({{ moduleNameStudly }}ServiceContract::class, {{ moduleNameStudly }}Service::class);
+
+        parent::register();
+    }
+
+    /**
+     * Register the router instance.
+     *
+     * @return void
+     */
+    protected function registerRouter()
+    {
+        $this->app->singleton(self::NAME.'_router', function ($app) {
+            return new Router($app['events'], $app);
+        });
+    }
+
+    /**
+     * Register migrations.
+     *
+     * @return void
+     */
+    protected function registerMigrations()
+    {
+        $serviceMigrationPath = __DIR__ . '/../database/migrations';
+
+        $this->loadMigrationsFrom($serviceMigrationPath);
+
+        $this->publishes([
+            $serviceMigrationPath => database_path('migrations'),
+        ], 'migrations');
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $source = __DIR__ . '/../config/config.php';
+
+        $this->mergeConfigFrom($source, self::NAME);
+
+        $this->publishes([$source => config_path(self::NAME.'.php')], 'config');
+    }
+}

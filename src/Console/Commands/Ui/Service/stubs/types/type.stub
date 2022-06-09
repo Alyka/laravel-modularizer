@@ -1,0 +1,6 @@
+import { IId } from 'CORE/types';
+
+interface {{ moduleNameStudly }} {
+    id: IId,
+}
+export default {{ moduleNameStudly }};

@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Policies\{{ moduleNameStudly }}Policy;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\{{ moduleNameStudly }}\Models\{{ moduleNameStudly }};
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class {{ class }} extends ServiceProvider
+{
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        {{ moduleNameStudly }}::class => {{ moduleNameStudly }}Policy::class,
+    ];
+
+    /**
+     * Register any application authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+    }
+}

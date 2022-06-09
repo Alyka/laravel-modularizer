@@ -1,2 +1,0 @@
-export { default as {{ serviceNameStudly }}Button } from './{{ serviceNameStudly }}Button.vue';
-export { default as {{ serviceNameStudly }}SettingForm } from './{{ serviceNameStudly }}SettingForm.vue';

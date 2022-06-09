@@ -1,0 +1,28 @@
+import { i18nPlugin as i18n } from 'CORE/plugins';
+import { {{ moduleNameStudly }}Form } from 'SERVICES/{{ moduleNameKebab }}';
+
+export default {
+    FormFields: [
+        {{ moduleNameStudly }}Form
+    ],
+
+    TableActions:  [
+        'CrudCreateTrigger',
+        'CrudDeleteTriggerBulk',
+    ],
+
+    TableFields: [
+        {key: 'id', label: i18n.t('common.id')},
+        {key: 'date', label: i18n.t('common.date')},
+        {key: 'actions', label: i18n.tc('action.action', 2)},
+    ],
+
+    TableSlots: {
+        'cell(actions)': 'CrudTableSlotActions',
+    },
+
+    TableSlotActions: [
+        'CrudEditTrigger',
+        'CrudDeleteTrigger',
+    ],
+};

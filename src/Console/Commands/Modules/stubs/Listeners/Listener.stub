@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class {{ class }}
+{
+    /**
+     * The {{ moduleNameStudly }}Service instance.
+     *
+     * @var {{ moduleNameStudly }}Service
+     */
+    protected $module;
+
+
+    /**
+     * Create the event listener.
+     *
+     * @param {{ moduleNameStudly }}Service $service
+     * @return void
+     */
+    public function __construct({{ moduleNameStudly }}Service $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @return void
+     */
+    public function handle($event)
+    {
+        ${{ moduleNameCamel }} = $event->model;
+    }
+}

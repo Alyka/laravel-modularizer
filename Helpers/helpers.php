@@ -9,68 +9,20 @@ use Illuminate\Support\Facades\File;
 use Installer\Providers\AppServiceProvider as InstallerServiceProvider;
 use Marketplace\Providers\AppServiceProvider as MarketplaceServiceProvider;
 
-if (! function_exists('scriptName')) {
-    /**
-     * Get the name of the service.
-     *
-     * Must be the same as the service's base directory.
-     *
-     * @return string
-     */
-    function scriptName()
-    {
-        return 'lavamon';
-    }
-}
+if (! function_exists('readComposerJson')) {
 
-if (! function_exists('scriptPath')) {
     /**
-     * Get the service path.
-     *
-     * @param string|null $path
-     * @return string
+     * Read the content of the composer.json file.
+     * 
+     * @return object
      */
-    function scriptPath($path = null)
+    function readComposerJson()
     {
-        return base_path(scriptName().DIRECTORY_SEPARATOR.$path);
-    }
-}
-
-if (! function_exists('corePath')) {
-    /**
-     * Get the core path.
-     *
-     * @param string|null $path
-     * @return string
-     */
-    function corePath($path = null)
-    {
-        return scriptPath(
-            'backend'
-            .DIRECTORY_SEPARATOR
-            .'core'
-            .DIRECTORY_SEPARATOR
-            .$path
+        $composerFile = file_get_contents(
+            base_path('composer.json')
         );
-    }
-}
-
-if (! function_exists('servicePath')) {
-    /**
-     * Get the service path.
-     *
-     * @param string|null $path
-     * @return string
-     */
-    function servicePath($path = null)
-    {
-        return scriptPath(
-            'backend'
-            .DIRECTORY_SEPARATOR
-            .'services'
-            .DIRECTORY_SEPARATOR
-            .$path
-        );
+        
+        return json_decode($composerFile, true);
     }
 }
 
@@ -85,14 +37,13 @@ if (! function_exists('getNamespace')) {
      */
     function getNamespace($dir)
     {
-        $composer = json_decode(file_get_contents(scriptPath('composer.json')), true);
+        $composer = readComposerJson();
 
         foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
             foreach ((array) $path as $pathChoice) {
-                if (
-                    realpath(base_path(scriptName().DIRECTORY_SEPARATOR.$pathChoice))
-                    === realpath(scriptPath('backend'.DIRECTORY_SEPARATOR.$dir))
-                ) {
+                $basePath = realpath(base_path($pathChoice));
+                
+                if ($basePath === realpath(base_path($dir))) {
                     return $namespace;
                 }
             }
@@ -102,23 +53,9 @@ if (! function_exists('getNamespace')) {
     }
 }
 
-if (! function_exists('serviceNamespace')) {
-    /**
-     * Get the namespace associated with the service directory.
-     *
-     * @return string
-     *
-     * @throws RuntimeException
-     */
-    function serviceNamespace()
-    {
-        return getNamespace('services');
-    }
-}
-
 if (! function_exists('moduleNamespace')) {
     /**
-     * Get the namespace associated with the module directory.
+     * Get the namespace associated with the given module.
      *
      * @return string
      *
@@ -126,21 +63,21 @@ if (! function_exists('moduleNamespace')) {
      */
     function moduleNamespace()
     {
-        return getNamespace('modules');
+        return 'Modules\\';
     }
 }
 
-if (! function_exists('coreNamespace')) {
+if (! function_exists('packageNamespace')) {
     /**
-     * Get the namespace of the core directory.
+     * Get the namespace of the package.
      *
      * @return string
      *
      * @throws RuntimeException
      */
-    function coreNamespace()
+    function packageNamespace()
     {
-        return getNamespace('core');
+        return 'Modularizer\\';
     }
 }
 
@@ -172,11 +109,11 @@ if (! function_exists('namespacePath')) {
      */
     function namespacePath($namespace)
     {
-        $composer = json_decode(file_get_contents(scriptPath('composer.json')), true);
+        $composer = readComposerJson();
 
         foreach ((array) data_get($composer, 'autoload.psr-4') as $namespaceChoice => $path) {
             if ($namespace === $namespaceChoice) {
-                return trim(scriptPath($path), '/\\');
+                return base_path($path);
             }
         }
 
@@ -193,7 +130,7 @@ if (! function_exists('classNamespace')) {
      */
     function classNamespace($class)
     {
-        $composer = json_decode(file_get_contents(scriptPath('composer.json')), true);
+        $composer = readComposerJson();
 
         foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
             if (Str::startsWith($class, $namespace)) {
@@ -205,14 +142,14 @@ if (! function_exists('classNamespace')) {
     }
 }
 
-if (! function_exists('classService')) {
+if (! function_exists('classModule')) {
     /**
      * Get the service the given class belongs to.
      *
      * @param string $class
      * @return string
      */
-    function classService($class)
+    function classModule($class)
     {
         $namespace = classNamespace($class);
 

@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Facades\{{ moduleNameStudly }}Repository;
+use Illuminate\Foundation\Http\FormRequest;
+
+class {{ class }} extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        ${{ moduleNameCamel }} = {{ moduleNameStudly }}Repository::find($this->route('{{ moduleNameSnake }}'));
+
+        return currentUser()->can('view', ${{ moduleNameCamel }});
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+
+        ];
+    }
+}

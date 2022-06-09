@@ -1,0 +1,17 @@
+<template>
+    <crud-table
+        :layout-search-text="$t('{{ moduleNameSnake }}.search_text')"
+    />
+</template>
+<script lang="ts">
+import Vue from 'vue';
+import { store } from 'SERVICES/{{ moduleNameKebab }}';
+export default Vue.extend({
+    provide()
+    {
+        return {
+            store
+        }
+    },
+})
+</script>

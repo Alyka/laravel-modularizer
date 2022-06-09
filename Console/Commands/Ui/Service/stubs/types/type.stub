@@ -1,6 +1,0 @@
-import { IId } from 'CORE/types';
-
-interface {{ serviceNameStudly }} {
-    id: IId,
-}
-export default {{ serviceNameStudly }};

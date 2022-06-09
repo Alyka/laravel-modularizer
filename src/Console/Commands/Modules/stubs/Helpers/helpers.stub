@@ -1,0 +1,40 @@
+<?php
+
+use Faker\Factory;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Models\{{ moduleNameStudly }};
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Repository;
+
+/**
+ * Get an instance of the {{ moduleNameWords }} repository
+ *
+ * @param {{ moduleNameStudly }} ${{ moduleNameCamel }}
+ * @return {{ moduleNameStudly }}Repository
+ */
+if(! function_exists('{{ moduleNameCamel }}Repository'))
+{
+    function {{ moduleNameCamel }}Repository(?{{ moduleNameStudly }} ${{ moduleNameCamel }} = null)
+    {
+        $app = app('{{ moduleNameSnake }}_repository');
+
+        if(${{ moduleNameCamel }})
+        {
+            return $app->setModel(${{ moduleNameCamel }});
+        }
+
+        return $app;
+    }
+}
+
+/**
+ * Get an instance of the {{ moduleNameStudly }} module
+ *
+ * @return {{ moduleNameStudly }}Service
+ */
+if(! function_exists('{{ moduleNameCamel }}Service'))
+{
+    function {{ moduleNameCamel }}Service()
+    {
+        return app('{{ moduleNameSnake }}_service');
+    }
+}

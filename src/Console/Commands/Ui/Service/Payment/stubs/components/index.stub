@@ -1,0 +1,2 @@
+export { default as {{ moduleNameStudly }}Button } from './{{ moduleNameStudly }}Button.vue';
+export { default as {{ moduleNameStudly }}SettingForm } from './{{ moduleNameStudly }}SettingForm.vue';

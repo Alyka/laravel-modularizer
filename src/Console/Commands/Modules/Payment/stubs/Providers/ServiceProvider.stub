@@ -1,0 +1,73 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Contracts\{{ moduleNameStudly }}Service as {{ moduleNameStudly }}ServiceContract;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Services\{{ moduleNameStudly }}Service;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Router;
+use Modularizer\Foundation\Providers\ServiceProvider;
+
+class {{ class }} extends ServiceProvider
+{
+    /**
+     * @var string
+     */
+    public const NAME = '{{ moduleNameCamel }}';
+
+    /**
+     * @inheritDoc
+     */
+    protected $providers = [];
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+
+        parent::boot();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerConfig();
+        $this->registerRouter();
+        $this->app->bind({{ moduleNameStudly }}ServiceContract::class, {{ moduleNameStudly }}Service::class);
+        $this->app->bind(self::NAME, {{ moduleNameStudly }}Service::class);
+
+        parent::register();
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $source = __DIR__ . '/../config/config.php';
+
+        $this->mergeConfigFrom($source, self::NAME);
+
+        $this->publishes([$source => config_path(self::NAME.'.php')], 'config');
+    }
+
+    /**
+     * Register the router instance.
+     *
+     * @return void
+     */
+    protected function registerRouter()
+    {
+        $this->app->singleton(self::NAME.'Router', function ($app) {
+            return new Router($app['events'], $app);
+        });
+    }
+}

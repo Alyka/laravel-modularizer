@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}Support\ImageUploader;
+use {{ moduleNamespace }}Contracts\UploadsImages;
+
+class {{ class }} extends ImageUploader implements UploadsImages
+{
+    /**
+     * @inheritDoc
+     */
+    protected $path = '{{ moduleNamePluralKebab }}';
+
+    /**
+     * @inheritDoc
+     */
+    protected $name = '{{ moduleNameCamel }}';
+
+    /**
+     * @inheritDoc
+     */
+    protected $dimensions = [
+        'width' => 660,
+        'height' => 450,
+        'crop' => true,
+    ];
+}

@@ -1,0 +1,43 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Routing\Router as BaseRouter;
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Http\Controllers\{{ moduleNameStudly }}Controller;
+
+class Router extends BaseRouter
+{
+    /**
+     * Route this api resource to its controller.
+     *
+     * @return void
+     */
+    public function api()
+    {
+        $this->router->post(
+            '/{{ moduleNamePluralKebab }}/save-settings',
+            [{{ moduleNameStudly }}Controller::class, 'saveSettings']
+        );
+
+        $this->router->get(
+            '/{{ moduleNamePluralKebab }}/get-settings',
+            [{{ moduleNameStudly }}Controller::class, 'getSettings']
+        );
+
+        $this->router->post(
+            '/{{ moduleNamePluralKebab }}/{{{ moduleNameSnake }}}/process',
+            [{{ moduleNameStudly }}Controller::class, 'process']
+        );
+
+        $this->router->match(
+            ['PUT', 'PATCH'],
+            '/{{ moduleNamePluralKebab }}/{{{ moduleNameSnake }}}/verify',
+            [{{ moduleNameStudly }}Controller::class, 'verify']
+        );
+
+        $this->router->apiResource(
+            '/{{ moduleNamePluralKebab }}', {{ moduleNameStudly }}Controller::class
+        )
+        ->only('index');
+    }
+}

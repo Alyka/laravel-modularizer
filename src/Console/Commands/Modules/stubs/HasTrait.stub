@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Module\{{ moduleNameStudly }}\Models\{{ moduleNameStudly }};
+
+trait {{ class }}
+{
+
+}

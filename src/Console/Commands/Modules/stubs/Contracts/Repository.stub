@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Modularizer\Contracts\Repository;
+
+interface {{ class }} extends Repository
+{
+
+}

@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ moduleNamespace }}{{ moduleNameStudly }}\Repositories\{{ moduleNameStudly }}RepositoryEloquent;
+use Illuminate\Support\Facades\Facade;
+
+class {{ class }} extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return {{ moduleNameStudly }}RepositoryEloquent::class;
+    }
+}

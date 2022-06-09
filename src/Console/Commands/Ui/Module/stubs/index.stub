@@ -1,0 +1,49 @@
+import routes from './routes';
+import Vue, { PluginObject } from 'vue';
+import sidebar from './sidebar';
+import components from './components';
+import { store } from 'SERVICES/{{ moduleNameKebab }}';
+import { store as layoutStore } from 'SERVICES/layout';
+import { router } from 'CORE/plugins';
+
+type IVue = typeof Vue;
+
+declare const window: any;
+declare const global: any;
+
+function install(Vue: IVue, options: PluginObject<any>) {
+    // @ts-ignore
+    if (install.installed) return;
+
+    // @ts-ignore
+    install.installed = true;
+
+    // Register the module's routes.
+    routes.forEach(route => {
+        router.addRoute(route);
+    });
+
+    // Register the module's sidebar links.
+    layoutStore.addSidebar(sidebar);
+
+    // Register module's components.
+    store.setComponents(components);
+}
+
+const VPlugin = {
+    install,
+};
+
+let GlobalVue = null;
+
+if (typeof window !== 'undefined') {
+    GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+    GlobalVue = global.Vue;
+}
+
+if (GlobalVue) {
+    GlobalVue.use(VPlugin);
+}
+
+export default VPlugin;

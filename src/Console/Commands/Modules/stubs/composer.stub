@@ -1,0 +1,31 @@
+{
+    "name": "laravel-modularizer/{{ moduleNameKebab }}",
+    "description": "",
+    "authors": [
+        {
+            "name": "Alika Matthew I.",
+            "email": "alika.matthew@gmail.com"
+        }
+    ],
+    "require" : {
+        "alyka/laravel-modularizer" : "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ moduleNamespace }}\{{ moduleNameStudly }}\\": ""
+        },
+        "files": [
+            "Helpers/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "{{ moduleNamespace }}\{{ moduleNameStudly }}\\Providers\\{{ moduleNameStudly }}ServiceProvider"
+            ],
+            "aliases": {
+                "{{ moduleNameStudly }}" : "{{ moduleNamespace }}\{{ moduleNameStudly }}\\Models\\{{ moduleNameStudly }}"
+            }
+        }
+    }
+}
