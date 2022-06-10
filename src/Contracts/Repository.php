@@ -53,6 +53,14 @@ interface Repository
     public function forceFill($model, $attributes);
 
     /**
+     * Make a model using the given array of data as its attributes.
+     *
+     * @param array $data
+     * @return Model
+     */
+    public function wrapWithModel(array $data);
+
+    /**
      * Create a new resource in storage.
      *
      * @param array $attributes

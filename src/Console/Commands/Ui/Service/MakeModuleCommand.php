@@ -97,7 +97,8 @@ class MakeModuleCommand extends GeneratorCommand
      */
     protected function rootNamespace()
     {
-        return 'package\frontend\modules\\'
+        return trim(config(ServiceProvider::NAME.'frontend_path'), '/\\')
+        . '\\'
         . $this->getModuleName();
     }
 }

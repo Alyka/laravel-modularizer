@@ -113,6 +113,19 @@ abstract class Repository
     }
 
     /**
+     * Make a model using the given array of data as its attributes.
+     *
+     * @param array $data
+     * @return Model
+     */
+    public function wrapWithModel(array $data)
+    {
+        $model = new Model;
+
+        return $model->forceFill($data);
+    }
+
+    /**
      * Create a new resource in storage.
      *
      * @param array $attributes

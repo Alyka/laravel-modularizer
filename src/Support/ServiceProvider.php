@@ -25,6 +25,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         parent::boot();
+        $this->publishConfig();
     }
 
     /**
@@ -48,6 +49,16 @@ class ServiceProvider extends BaseServiceProvider
         $source = __DIR__ . '/../../config/modularizer.php';
 
         $this->mergeConfigFrom($source, self::NAME);
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function publishConfig()
+    {
+        $source = __DIR__ . '/../../config/modularizer.php';
 
         $this->publishes([$source => config_path(self::NAME.'.php')], 'config');
     }
