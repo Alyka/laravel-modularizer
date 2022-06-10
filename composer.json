@@ -12,7 +12,7 @@
             "Modularizer\\": "src/"
         },
         "files": [
-            "helpers/Helpers.php"
+            "helpers/helpers.php"
         ]
     },
     "require": {
