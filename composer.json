@@ -10,10 +10,7 @@
     "autoload": {
         "psr-4": {
             "Modularizer\\": "src/"
-        },
-        "files": [
-            "helpers/Helpers.php"
-        ]
+        }
     },
     "require": {
         "laravel/framework": "^8.75"
