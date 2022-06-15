@@ -70,7 +70,7 @@ class {{ class }} extends ServiceProvider
      */
     protected function registerMigrations()
     {
-        $serviceMigrationPath = __DIR__ . '/../database/migrations';
+        $serviceMigrationPath = __DIR__ . '/../Database/Migrations';
 
         $this->loadMigrationsFrom($serviceMigrationPath);
 
