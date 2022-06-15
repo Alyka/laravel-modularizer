@@ -115,11 +115,12 @@ abstract class Service
      *
      * @param array $attributes
      * @param array $constraints
+     * @param string $key
      * @return void
      */
-    public function sync($attributes, $constraints)
+    public function sync($attributes, $constraints, $key = 'id')
     {
-        $ids = collect($attributes)->pluck('id')->toArray();
+        $ids = collect($attributes)->pluck($key)->toArray();
 
         $recordsToBeDeleted = $this->repository
                                    ->getInverse($ids, $constraints);
@@ -131,8 +132,8 @@ abstract class Service
 
         // Upate and create existing and new records.
         foreach ($attributes as $attribute) {
-            if ($this->repository->find(@$attribute['id'])) {
-                $this->update($attribute['id'], $attribute);
+            if ($this->repository->find(@$attribute[$key])) {
+                $this->update($attribute[$key], $attribute);
             } else {
                 $this->store(array_merge($attribute, $constraints));
             }
