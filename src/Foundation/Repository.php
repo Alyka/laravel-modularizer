@@ -207,6 +207,19 @@ abstract class Repository
     }
 
     /**
+     * Delete all records that match the specified condition.
+     * 
+     * @param array $conditions
+     * @return void
+     */
+    public function deleteWhere($conditions)
+    {
+        $this->newBuilder()
+             ->filter($conditions)
+             ->delete();
+    }
+
+    /**
      * Retrieve the specified resource from storage.
      *
      * @param int $id Resource identifier.

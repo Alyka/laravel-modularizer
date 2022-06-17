@@ -111,6 +111,14 @@ interface Repository
     public function delete($id = null, $attributes = []);
 
     /**
+     * Delete all records that match the specified condition.
+     * 
+     * @param array $conditions
+     * @return void
+     */
+    public function deleteWhere($conditions);
+
+    /**
      * Retrieve the specified resource from storage.
      *
      * @param int $id Resource identifier.
