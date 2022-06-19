@@ -3,6 +3,7 @@
 namespace Modularizer\Database\Eloquent\Concerns;
 
 use Illuminate\Support\Str;
+use RuntimeException;
 
 trait Filterable
 {
@@ -20,13 +21,19 @@ trait Filterable
                 $paramKeyStud = Str::studly($param);
                 $method = "filterBy{$paramKeyStud}";
 
-                // ensure that only fields found in the model's
+                // Ensure that only fields found in the model's
                 // 'filterable' property, or whose filterBy methods
                 // are defined, are effective in the filtering operation.
                 if (method_exists($this, $method)) {
                     $this->$method($query, $value);
                 } elseif (in_array($param, ($this->filterable ?? []))) {
                     $query->where($param, $value);
+                } else {
+                    throw new RuntimeException(
+                        "Add {$param} to filterable or define filterBy"
+                        .Str::studly($param)
+                        ." method."
+                    );
                 }
             }
         }
