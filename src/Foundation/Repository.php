@@ -207,7 +207,7 @@ abstract class Repository
     }
 
     /**
-     * Delete all records that match the specified condition.
+     * Delete all records that match the specified condition(s).
      * 
      * @param array $conditions
      * @return void

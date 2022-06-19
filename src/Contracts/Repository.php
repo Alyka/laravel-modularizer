@@ -111,7 +111,7 @@ interface Repository
     public function delete($id = null, $attributes = []);
 
     /**
-     * Delete all records that match the specified condition.
+     * Delete all records that match the specified condition(s).
      * 
      * @param array $conditions
      * @return void
