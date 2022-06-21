@@ -3,7 +3,6 @@
 namespace Modularizer\Database\Eloquent\Concerns;
 
 use Illuminate\Support\Str;
-use RuntimeException;
 
 trait Filterable
 {
@@ -28,12 +27,6 @@ trait Filterable
                     $this->$method($query, $value);
                 } elseif (in_array($param, ($this->filterable ?? []))) {
                     $query->where($param, $value);
-                } else {
-                    throw new RuntimeException(
-                        "Add {$param} to filterable or define filterBy"
-                        .Str::studly($param)
-                        ." method."
-                    );
                 }
             }
         }
