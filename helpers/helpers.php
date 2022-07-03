@@ -180,22 +180,22 @@ if (! function_exists('isAdminHost')) {
     {
         return Str::startsWith(
             (request()->header('origin') ?? request()->url()),
-            config(AdminServiceProvider::NAME.'.url')
+            config('admin.url')
         );
     }
 }
 
-if (! function_exists('isMarketplaceHost')) {
+if (! function_exists('isWebHost')) {
     /**
      * Determine if the current host is the marketplace host.
      *
      * @return boolean
      */
-    function isMarketplaceHost()
+    function isWebHost()
     {
         return Str::startsWith(
             (request()->header('origin') ?? request()->url()),
-            config(MarketplaceServiceProvider::NAME.'.url')
+            config('web.url')
         );
     }
 }
@@ -210,7 +210,7 @@ if (! function_exists('isInstallerHost')) {
     {
         return Str::startsWith(
             (request()->header('origin') ?? request()->url()),
-            config(InstallerServiceProvider::NAME.'.url')
+            config('installer.url')
         );
     }
 }
@@ -225,7 +225,7 @@ if (! function_exists('isDocHost')) {
     {
         return Str::startsWith(
             (request()->header('origin') ?? request()->url()),
-            config(DocsServiceProvider::NAME.'.url')
+            config('docs.url')
         );
     }
 }
