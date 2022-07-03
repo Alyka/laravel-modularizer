@@ -98,7 +98,8 @@ interface Service
      *
      * @param Model $model
      * @param Model $newOwner
+     * @param string|null $relation
      * @return mixed
      */
-    public function changeOwner($model, $newOwner);
+    public function changeOwner($model, $newOwner, $relation = null);
 }

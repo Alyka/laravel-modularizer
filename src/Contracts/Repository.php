@@ -211,11 +211,12 @@ interface Repository
     /**
      * Associate two given models with each other.
      *
-     * @param Model|null $child
+     * @param Model $child
      * @param Model $parent
+     * @param string|null $relation
      * @return Repository
      */
-    public function associate($child, $parent);
+    public function associate($child, $parent, $relation = null);
 
     /**
      * Get all records that are not in the specified ids.

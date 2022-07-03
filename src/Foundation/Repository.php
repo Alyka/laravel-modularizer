@@ -371,12 +371,18 @@ abstract class Repository
     /**
      * Associate two given models with each other.
      *
-     * @param Model|null $child
+     * @param Model $child
      * @param Model $parent
+     * @param string|null $relation
      * @return Repository
      */
-    public function associate($child, $parent)
+    public function associate($child, $parent, $relation = null)
     {
+        if ($relation) {
+            $child->{$relation}()->associate($parent);
+            return $this;
+        }
+
         $child->resolveRelationUsing('_parent', function ($child) use ($parent) {
             return $child->belongsTo(get_class($parent));
         });

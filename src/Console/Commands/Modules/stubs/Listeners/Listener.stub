@@ -13,7 +13,7 @@ class {{ class }}
      *
      * @var {{ moduleNameStudly }}Service
      */
-    protected $module;
+    protected $service;
 
 
     /**
