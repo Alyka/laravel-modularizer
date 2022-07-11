@@ -60,6 +60,19 @@ abstract class Repository
     }
 
     /**
+     * Get the specified factory as the model's factory.
+     *
+     * @param string $factory
+     * @return Factory
+     */
+    public function makeFactory($factory) : Factory
+    {
+        return $this->newModel()
+                    ->setFactory($factory)
+                    ->factory();
+    }
+
+    /**
      * Apply a given eloquent local scope on the query.
      *
      * @param string $scope
@@ -185,7 +198,7 @@ abstract class Repository
     public function updateOrCreate(array $filters, array $attributes)
     {
         return $this->toObject(
-            $this->getBuilder()->updateOrCreate($filters, $attributes)
+            $this->newBuilder()->updateOrCreate($filters, $attributes)
         );
     }
 

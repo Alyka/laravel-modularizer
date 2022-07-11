@@ -10,6 +10,13 @@ class Model extends BaseModel
     use ConcernsModel;
 
     /**
+     * The model factory instance.
+     *
+     * @var string
+     */
+    protected $factory;
+
+    /**
      * List of fields to be searched during a search query.
      *
      * @var string[]
@@ -22,4 +29,17 @@ class Model extends BaseModel
      * @var array[]
      */
     protected $filterable = [];
+
+    /**
+     * Set the factory class.
+     *
+     * @param string $factory
+     * @return $this
+     */
+    public function setFactory($factory)
+    {
+        $this->factory = $factory;
+
+        return $this;
+    }
 }

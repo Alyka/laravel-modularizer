@@ -20,6 +20,14 @@ interface Repository
     public function factory() : Factory;
 
     /**
+     * Get the specified factory as the model's factory.
+     *
+     * @param string $factory
+     * @return Factory
+     */
+    public function makeFactory($factory) : Factory;
+
+    /**
      * Apply a given eloquent local scope on the query.
      *
      * @param string $scope
