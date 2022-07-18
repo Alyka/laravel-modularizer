@@ -188,6 +188,36 @@ abstract class Repository
     }
 
     /**
+     * Forcefully Update the specified resource in storage.
+     * 
+     * @param int $id
+     * @param array $attributes
+     * @return Model|User
+     */
+    public function forceUpdate($id, $attributes)
+    {
+        $model = $this->getModelById($id);
+
+        $model->forceFill($attributes)->save();
+
+        return $this->toObject($model->refresh());
+    }
+
+    /**
+     * Update the matched resource in storage.
+     *
+     * @param array $filter
+     * @param array $attributes
+     * @return int
+     */
+    public function updateWhere(array $filter, array $attributes)
+    {
+        return $this->newBuilder()
+                    ->filter($filter)
+                    ->update($attributes);
+    }
+
+    /**
      * Update the specified resource of create
      * new one if it does not exist.
      *
@@ -210,26 +240,26 @@ abstract class Repository
      *
      * @param int|null $id
      * @param array $attributes
-     * @return void
+     * @return int
      */
     public function delete($id = null, $attributes = [])
     {
         $model = $this->getModelById($id);
 
-        $model->delete();
+        return $model->delete();
     }
 
     /**
      * Delete all records that match the specified condition(s).
      * 
      * @param array $conditions
-     * @return void
+     * @return int
      */
     public function deleteWhere($conditions)
     {
-        $this->newBuilder()
-             ->filter($conditions)
-             ->delete();
+        return $this->newBuilder()
+                    ->filter($conditions)
+                    ->delete();
     }
 
     /**
@@ -274,11 +304,9 @@ abstract class Repository
         $builder = $this->newBuilder();
 
         if (is_array($args[0])) {
-            foreach ($args[0] as $key => $arg) {
-                $builder->where($key, $arg);
-            }
-
-            return $builder->first();
+            return $this->toObject(
+                $builder->filter($args[0])->first()
+            );
         }
 
         return $this->toObject(

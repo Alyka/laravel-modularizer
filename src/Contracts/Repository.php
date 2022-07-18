@@ -97,6 +97,24 @@ interface Repository
     public function update(array $attributes, $id);
 
     /**
+     * Forcefully Update the specified resource in storage.
+     * 
+     * @param int $id
+     * @param array $attributes
+     * @return Model|User
+     */
+    public function forceUpdate($id, $attributes);
+
+    /**
+     * Update the matched resource in storage.
+     *
+     * @param array $filter
+     * @param array $attributes
+     * @return Model|User
+     */
+    public function updateWhere(array $filter, array $attributes);
+
+    /**
      * Update the specified resource of create
      * new one if it does not exist.
      *
@@ -114,7 +132,7 @@ interface Repository
      *
      * @param int|null $id
      * @param array $attributes
-     * @return void
+     * @return int
      */
     public function delete($id = null, $attributes = []);
 
@@ -122,7 +140,7 @@ interface Repository
      * Delete all records that match the specified condition(s).
      * 
      * @param array $conditions
-     * @return void
+     * @return int
      */
     public function deleteWhere($conditions);
 
