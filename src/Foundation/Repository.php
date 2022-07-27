@@ -304,8 +304,12 @@ abstract class Repository
         $builder = $this->newBuilder();
 
         if (is_array($args[0])) {
+            foreach ($args[0] as $field => $value) {
+                $builder->where($field, $value);
+            }
+
             return $this->toObject(
-                $builder->filter($args[0])->first()
+                $builder->first()
             );
         }
 
